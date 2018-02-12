@@ -17,13 +17,11 @@
                 <div class="list-name">Todo:</div>
                     <ul>
                         <li>
-                            //nytt kort här
-                        </li>
-                        <li>
-                            <!-- <form action="">
-                                <input type="text" name="title" placeholder="Card title">
-                                <button class="new-card-button">Add new card</button>
-                            </form> -->
+                            <div class="card">
+                                <span class="card-title">Card #1 in Todo</span>
+                                <span class="card-due"></span>
+                                <button class="delete-card">X</button>
+                              </div>
                         </li>
                     </ul>
                 </div>            
@@ -34,11 +32,11 @@
                 <div class="list-name">Doing:</div>
                     <ul>
                         <li>
-                            //nytt kort här
-                        </li>
-                        <li>
-                        <!-- <input type="text" name="title" placeholder="Card title">
-                            <button class="new-card-button">Add new card</button> -->
+                            <div class="card">
+                                <span class="card-title">Card #1 in Doing</span>
+                                <span class="card-due"></span>
+                                <button class="delete-card">X</button>
+                            </div>
                         </li>
                     </ul>
                 </div>            
@@ -49,15 +47,40 @@
                 <div class="list-name">Done:</div>
                     <ul>
                         <li>
-                            //nytt kort här
-                        </li>
-                        <li>
+                            <div class="card">
+                                <span class="card-title">Card #1 in Done</span>
+                                <span class="card-due"></span>
+                                <button class="delete-card">X</button>
+                            </div>
                         </li>
                     </ul>
                 </div>            
             </div>    
         </div>
     <!-- </div> -->
+    <div id="list-creation-dialog" title="Create new list" class="hide">
+        <form> 
+            <input type="text" name="title" placeholder="List title" />
+        </form>
+    </div>
+
+    <div id="card-edit-dialog" title="Edit card" class="hide">
+        <div id="card-tabs">
+            <ul>
+                <li class="tab"><a href="#tab1">Form</a></li>
+                <li class="tab"><a href="#tab2">Other</a></li>
+            </ul>
+            <div id="tab1">
+                <form> 
+                    <input type="text" name="title" placeholder="Card title" value="" />
+                </form>
+            </div>
+            <div id="tab2">
+                <p class="due-date">Please select the due date</p>
+                <div class="datepicker"></div>
+            </div>
+        </div>
+    </div>
 </body>
     <script src="app.js"></script>
 </html>

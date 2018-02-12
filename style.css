@@ -3,6 +3,10 @@ body {
     font-family: sans-serif;
 }
 
+.hide {
+    display: none;
+}
+
 .board {
     height: 100%;
 }
@@ -48,8 +52,14 @@ ul {
     list-style: none;
 }
 
+form {
+    border: black, 2px;
+    color: blue;
+}
+
 input {
     height: auto;
     word-wrap: break-word;
     overflow-y: auto;
 }
+
