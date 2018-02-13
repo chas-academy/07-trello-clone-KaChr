@@ -4,7 +4,7 @@ $(document).ready(function() {
 
       var initialize = function() {
         initDialogs(); 
-        // initTabs();
+        initTabs();
         // initSort();
         createAdders();
         addEventListeners();
@@ -16,10 +16,24 @@ $(document).ready(function() {
           modal: true,
           width: 270,
           buttons: {
-            Save: function() { console.log('Save me!') },
+            Save: function() { console.log('Save me!') }, 
             Cancel: function() { $(this).dialog("close") }
           }
         })
+
+        cardDetailDialog = $("#card-edit-dialog").dialog({
+          autoOpen: false,
+          modal: true,
+          width: 270,
+          buttons: {
+            Save: function() { console.log('Save me!') }, 
+            Cancel: function() { $(this).dialog("close") }
+          }
+        })
+      }
+
+      var initTabs = function() {
+        $('#card-tabs').tabs();
       }
 
       var createAdders = function() {
@@ -75,6 +89,7 @@ $(document).ready(function() {
 
       var openCardDetailDialog = function() {
         debugger;
+        cardDetailDialog.dialog("open");
       }
 
       var openAddListDialog = function() {
