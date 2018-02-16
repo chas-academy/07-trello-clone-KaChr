@@ -25,6 +25,8 @@ $(document).ready(function() {
           autoOpen: false,
           modal: true,
           width: 270,
+          show: {effect: 'puff', duration: 500},
+          hide: {effect: 'puff', duration: 500},
           buttons: {
             Save: function() { console.log('Save me!') }, 
             Cancel: function() { $(this).dialog("close") }
@@ -88,41 +90,22 @@ $(document).ready(function() {
       }
 
       var openCardDetailDialog = function() {
-        debugger;
         cardDetailDialog.dialog("open");
       }
 
       var openAddListDialog = function() {
-        debugger;
+        debugger; //--TODO
         listDialog.dialog("open");
       }
 
-
-      // $('.new-card-button').on('submit', function(event){
-      //     $("form").serializeArray().value();
-      //     // var card = $(`<h4>`${x}`</h4>
-      //     // <button class"button delete">X</button>`);
-      //     event.preventDefault();
-      // });
-      // $('.new-card-button').submit(function(event) {
+      $(function() {
+        $("#datepicker").datepicker({
+          dateFormat: 'dd-mm-yy',
+          showAnim: 'clip'
+      });
       
-      //     event.preventDefault();
-      //     // $(this).serialize(); will be the serialized form
-      //     $(this).append($(this).serialize());
-      // });
-      // $('.new-card-button').click(function(){
-      //     alert($('form').serialize());
-      //     $('form').submit();
-      //   });
+    });
   
-        // $( ".new-card-button" ).click(function( event ) {
-        //   event.preventDefault();
-        //   $(".newCard") .text() // to get text
-  
-        //   // $( "
-        //     // .append( "default " + event.type + " prevented" )
-        //     .appendTo( ".card " );
-        // });
 
       return {
         initialize: initialize
