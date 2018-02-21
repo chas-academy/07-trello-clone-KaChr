@@ -5,9 +5,12 @@ $(document).ready(function() {
       var initialize = function() {
         initDialogs(); 
         initTabs();
-        // initSort();
+        initSort();
+        initDrag();
+        initDrop();
         createAdders();
         addEventListeners();
+        selectDate();
       };
 
       var initDialogs = function() {
@@ -37,6 +40,29 @@ $(document).ready(function() {
       var initTabs = function() {
         $('#card-tabs').tabs();
       }
+
+      var initSort = function() {
+        $(".cards").sortable({
+          cursor: "pointer",
+          connectWith: ".cards",
+          handle: ".card",
+          helper: "original",
+          placeholder: "sortable-placeholder",
+          revert: true
+        });
+      };
+
+      var initDrag = function() {
+        $(".card").draggable({
+          connectToSortable: ".cards"
+        });
+      };
+  
+      var initDrop = function() {
+        $(".cards").droppable({
+          accept: ".card"
+        });
+      };
 
       var createAdders = function() {
 
@@ -94,17 +120,15 @@ $(document).ready(function() {
       }
 
       var openAddListDialog = function() {
-        debugger; //--TODO
         listDialog.dialog("open");
       }
-
-      $(function() {
+      
+      var selectDate = function() {
         $("#datepicker").datepicker({
           dateFormat: 'dd-mm-yy',
           showAnim: 'clip'
-      });
-      
-    });
+        });
+      }
   
 
       return {
