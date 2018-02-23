@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     var Board = (function() {
-
+      var currentTarget;
       var initialize = function() {
         initDialogs(); 
         initTabs();
@@ -19,7 +19,7 @@ $(document).ready(function() {
           modal: true,
           width: 270,
           buttons: {
-            Save: function() { console.log('Save me!') }, 
+            // Save: saveList, 
             Cancel: function() { $(this).dialog("close") }
           }
         })
@@ -31,7 +31,7 @@ $(document).ready(function() {
           show: {effect: 'puff', duration: 500},
           hide: {effect: 'puff', duration: 500},
           buttons: {
-            Save: function() { console.log('Save me!') }, 
+            Save: saveCard,
             Cancel: function() { $(this).dialog("close") }
           }
         })
@@ -80,14 +80,14 @@ $(document).ready(function() {
         </div>
         `);
         
-        $('ul').after(newCardForm);
+        $('ul.cards').after(newCardForm);
         $('.column:last').after(newListForm);
       }
 
       var addEventListeners = function() {
         $('.new-card').on("submit", addCard);
         $('body').on("click", ".delete-card", deleteCard);
-        $('body').on("click", ".card-title", openCardDetailDialog);
+        $('body').on("click", ".card-title", (event) => openCardDetailDialog(event.target));
         $('.new-list').on("click", openAddListDialog);
       }
 
@@ -104,18 +104,36 @@ $(document).ready(function() {
           </li>`);
   
         var newTitle = $(this).serializeArray()[0].value;
+        if (newTitle){
         $(newCard).find('.card-title').html(newTitle);
+        } else {
+          return;
+        }
 
         $(this).parent().find('ul li:last').after(newCard);
 
         $(this)[0].reset();
       }
 
+      var saveCard = function(event) {
+         event.preventDefault();
+          
+         var cardInfo = $(this).find('input').serializeArray();
+
+         $(currentTarget).text(cardInfo[0].value);
+         $(currentTarget).siblings('.card-due').text(cardInfo[1].value);
+
+         cardDetailDialog.dialog("close");
+      }
+
       var deleteCard = function() {
         $(this).parent().remove();
       }
 
-      var openCardDetailDialog = function() {
+      var openCardDetailDialog = function(target) {
+        currentTarget = target;
+        $('input#title-text').val($(currentTarget).text());
+        $('input#datepicker').val($(currentTarget).siblings('.card-due').text())
         cardDetailDialog.dialog("open");
       }
 
