@@ -19,7 +19,7 @@ $(document).ready(function() {
           modal: true,
           width: 270,
           buttons: {
-            // Save: saveList, 
+            Save: saveList, 
             Cancel: function() { $(this).dialog("close") }
           }
         })
@@ -126,38 +126,36 @@ $(document).ready(function() {
          cardDetailDialog.dialog("close");
       }
 
-      //    Funkar inte, försök igen!
-      // var saveList = function(event) {
-      //   event.preventDefault();
+      var saveList = function(event) {
+        event.preventDefault();
 
-      //   var newList = $(`
-      //   <div class="column">
-      //       <div class="list">
-      //           <div class="new-list-name"></div>
-      //               <ul class="cards">
-      //                   <li>
-      //                       <div class="card">
-      //                           <span class="card-title">Card #1 in Doing</span>
-      //                           <span class="card-due"></span>
-      //                           <button class="delete-card">X</button>
-      //                       </div>
-      //                   </li>
-      //               </ul>
-      //           </div>            
-      //       </div>    
-      //   </div>`);
+        var newList = $(`
+        <div class="column">
+            <div class="list">
+                <div class="new-list-name"></div>
+                    <ul class="cards">
+                        <li>
+                            <div class="card">
+                                <span class="card-title">Card #1 in new list</span>
+                                <span class="card-due"></span>
+                                <button class="delete-card">X</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="new-card">
+                      <input type="text" name="title" placeholder="Card title">
+                      <button class="new-card-button">Add new card</button>
+                    </form>
+                </div>            
+            </div>    
+        </div>`);
 
-      //   var newlistName = $(this).find('input').serializeArray();
-      //   if (newlistName){
-      //     $(newList).find('.new-list-name').html(newlistName);
-      //   } else {
-      //     return;
-      //   }
-
-      //   $(this).parent().find('column:last').after(newList);
+        var newListName = $(this).find('input').serializeArray();
+          
+        $('.column:last').append(newList).find('.new-list-name').text(newListName[0].value);
         
-      //   listDialog.dialog("close");
-      // }
+        listDialog.dialog("close");
+      }
 
       var deleteCard = function() {
         $(this).parent().remove();

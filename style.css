@@ -42,7 +42,8 @@ body {
     user-select: none;
 }
 
-.list-name {
+.list-name,
+.new-list-name {
     font-size: 18px;
     font-weight: bold;
     text-align: center;
