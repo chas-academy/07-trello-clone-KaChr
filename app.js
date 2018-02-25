@@ -126,6 +126,39 @@ $(document).ready(function() {
          cardDetailDialog.dialog("close");
       }
 
+      //    Funkar inte, försök igen!
+      // var saveList = function(event) {
+      //   event.preventDefault();
+
+      //   var newList = $(`
+      //   <div class="column">
+      //       <div class="list">
+      //           <div class="new-list-name"></div>
+      //               <ul class="cards">
+      //                   <li>
+      //                       <div class="card">
+      //                           <span class="card-title">Card #1 in Doing</span>
+      //                           <span class="card-due"></span>
+      //                           <button class="delete-card">X</button>
+      //                       </div>
+      //                   </li>
+      //               </ul>
+      //           </div>            
+      //       </div>    
+      //   </div>`);
+
+      //   var newlistName = $(this).find('input').serializeArray();
+      //   if (newlistName){
+      //     $(newList).find('.new-list-name').html(newlistName);
+      //   } else {
+      //     return;
+      //   }
+
+      //   $(this).parent().find('column:last').after(newList);
+        
+      //   listDialog.dialog("close");
+      // }
+
       var deleteCard = function() {
         $(this).parent().remove();
       }
